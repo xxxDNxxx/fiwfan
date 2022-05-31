@@ -1,12 +1,12 @@
 <template>
   
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="box-regis  ">
      
         <v-text-field
-          v-model="username"
+          v-model="username" class="color-blue "
           
           
-          label="ชื่อผู้ใช้/Username"
+          label="ชื่อผู้ใช้/Username" 
           required
         ></v-text-field>
       
@@ -59,13 +59,15 @@
       
 
       <v-btn
-        class="mr-4"
+        class="mr-4 btn-success"
         type="submit"
         
       >
         submit
       </v-btn>
-      <v-btn @click="clear">
+      <v-btn
+      class="grey"
+      @click="clear">
         clear
       </v-btn>
     </form>
@@ -110,3 +112,28 @@ import * as auth from '@/services/authService'
     },
   }
 </script>
+<style>
+.color-blue {
+    color: #1976d2;
+}
+label {
+      color: #1976d2 !important;
+}
+ .box-regis{
+    color: #1976d2;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #b6dbff;
+    box-shadow: 7px 5px 8px #8c99a9;
+    margin-top: 2rem;
+}
+.btn-success {
+    background-color: #ffb700 !important;
+    border-color: #ffd952 !important;
+}
+input{
+    color: #003367!important;
+}
+
+</style>

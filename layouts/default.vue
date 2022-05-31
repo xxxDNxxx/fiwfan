@@ -1,35 +1,25 @@
 <template>
   <v-app class="bg-main" dark>
-    
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      class="bg-head"
-    >
-      
-      
-      
-      
-      <v-toolbar-title style="margin-right:100px;" v-text="title" />
-      
-       <v-btn to="/logo" style="margin-right:15px;"  button>
-        <h3>โลโก้</h3>
-      </v-btn>
-      
-      
+
+    <v-app-bar :clipped-left="clipped" fixed app class="bg-head">
+
+
+      <img src="https://www.citizensmn.bank/assets/files/PK9sr79g/woohoo-logo-200px.png" alt="" style="height:4rem;">
+      <!-- <v-btn to="/logo" style=" color: #22269e; background-color: #ffa90a;"  button>
+        <h3><img src="https://www.citizensmn.bank/assets/files/PK9sr79g/woohoo-logo-200px.png" alt=""></h3>
+      </v-btn> -->
+      <v-toolbar-title class="head-title" v-text="title" />
+
+
+
+
     </v-app-bar>
-    <v-main>
-      <v-container style="margin:0;">
+    <v-main style="padding:unset;">
+      <v-container style="">
         <nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
+    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
@@ -41,11 +31,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-      class="bg-head"
-    >
+    <v-footer :fixed="fixed" app class="bg-foot">
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -53,7 +39,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       clipped: false,
       drawer: false,
@@ -70,26 +56,58 @@ export default {
           to: '/inspire'
         }
       ],
-      
+
       miniVariant: false,
       right: false,
       rightDrawer: false,
-      title: 'Fiwfan'
+      title: 'Woohoo'
     }
   }
 }
 </script>
 <style scoped>
-.bg-main{
-background: rgb(202,200,231);
-background: linear-gradient(180deg, rgba(202,200,231,1) 0%, rgba(0,0,103,1) 10%, rgba(72,72,176,1) 57%, rgba(0,212,255,1) 100%);
+* {
+  font-family: 'prompt';
 }
-.bg-head{
-  background: rgb(202,200,231);
-background: linear-gradient(0deg, rgba(202,200,231,1) 0%, rgba(0,0,103,1) 10%, rgba(72,72,176,1) 57%, rgba(0,212,255,1) 100%);
+
+.bg-main {
+  background: rgb(255, 255, 255);
 }
-link{
-  color:white;
+
+/* .bg-head{
+  background: #1b2c6c!important;
+  border-radius: 0px 0px  10px 10px !important;
+}*/
+.bg-foot {
+  background: #1b2c6c !important;
+}
+
+.bg-head {
+  background: #ffffff !important;
+  border-top: 1rem solid rgb(25, 26, 92);
+  flex: unset;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  position: sticky;
+  height: unset !important;
+  box-shadow: -3px -4px 0px 0px rgb(0 0 0 / 9%), 0px 4px 5px 0px rgb(0 0 0 / 3%), 0px 1px 10px 0px rgb(0 0 0 / 13%) !important;
+}
+
+.head-title {
+  margin-right: 3rem;
+  margin-left: 1rem;
+  color: rgb(14 43 129);
+  font-size: 35px;
+  font-weight: 500;
+  background: #ffffff !important;
+}
+
+.bg-white {
+  background: #ffffff !important;
+}
+
+link {
+  color: white;
   margin: 1rem;
   border-style: none;
 }
