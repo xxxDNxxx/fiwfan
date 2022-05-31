@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-layout column justify-center align-center>
 <v-div class="head-col">
 
@@ -293,6 +294,7 @@
 
 
   </v-layout>
+  </div>
 </template>
 
 <style>

@@ -2,7 +2,7 @@
 <div>
     <h1>Login</h1>
   
-    <form @submit.prevent="submit" class="box-login">
+    <form @submit.prevent="userLogin" class="box-login">
       
         <v-text-field
           v-model="username"
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import * as auth from '@/services/authService'
+
 
 
   export default {
@@ -43,8 +43,31 @@ import * as auth from '@/services/authService'
     data: () => ({
       username: '',
       password:'',
-      
+      err: null,
     }),
+    methods: {
+        async userLogin() {
+          const payload = {
+            data:{
+              username : this.username,
+              password : this.password
+            }
+          }
+          try{
+            await this.$auth.loginWith('local',payload).then(res =>{
+              this.$auth.setUser(res.data.username)
+              console.log(res.data.username)
+              console.log(this.$auth.user)
+            })
+            
+          }catch(error){
+            console.log(error)
+            this.$router.push('/login');
+          }
+         
+        },
+      },
+      
 
     
   }

@@ -9,7 +9,47 @@
         <h3><img src="https://www.citizensmn.bank/assets/files/PK9sr79g/woohoo-logo-200px.png" alt=""></h3>
       </v-btn> -->
       <v-toolbar-title class="head-title" v-text="title" />
-
+      <v-spacer></v-spacer>
+      <v-btn
+      rounded
+      color="primary"
+      dark
+      v-if="isLoggedin"
+     
+    >
+      {{user}}
+    </v-btn>
+      <v-btn
+      rounded
+      color="error"
+      dark
+      @click="userLogout"
+      v-if="isLoggedin"
+     
+    >
+      ออกจากระบบ
+    </v-btn>
+    <div v-else>
+      <v-btn
+      
+      rounded
+      color="primary"
+      dark
+      to="/login"
+    >
+      เข้าสู่ระบบ
+    </v-btn>
+    <v-btn
+      
+      to="/register"
+      rounded
+      color="error"
+      dark
+     
+    >
+      สมัครสมาชิก
+    </v-btn>
+    </div>
 
 
 
@@ -38,9 +78,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      user: this.$auth.user,
+      isLoggedin:this.$auth.loggedIn,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -62,7 +105,15 @@ export default {
       rightDrawer: false,
       title: 'Woohoo'
     }
-  }
+  },
+  
+      methods: {
+        async userLogout() {
+          await this.$auth.logout()
+          this.$router.push('/login');
+        },
+      },
+      
 }
 </script>
 <style scoped>
